@@ -1,0 +1,5 @@
+discord.py==1.5.1
+requests==2.25.0
+env-file
+beautifulsoup4==4.9.3
+lxml==4.6.2
