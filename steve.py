@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord import Activity, ActivityType, AllowedMentions
 from discord.ext.commands import when_mentioned_or
+from modules.wiki import Wiki
 
 import env_file
 import logging
@@ -34,5 +35,7 @@ async def invite(ctx):
         "https://discord.com/api/oauth2/authorize?client_id=784725037172129803&permissions=379968&scope=bot"
     )
 
+
+client.add_cog(Wiki(client))
 
 client.run(token["BOT_TOKEN"])

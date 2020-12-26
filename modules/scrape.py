@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import re
 
 
 def search(query: str):
@@ -16,9 +17,11 @@ def search(query: str):
     return search_results[0]["href"]
 
 
-def scrape(url: str):
+def scrape_about(url: str):
     scrape_response = requests.get(url).text
     scrape_source = BeautifulSoup(scrape_response, "lxml")
+    scrape_source.table.decompose()
+
     paras = []
     for divs in scrape_source.find_all(
         "div", {"class": "mw-parser-output"}
@@ -28,8 +31,5 @@ def scrape(url: str):
     return paras
 
 
-query = search("iron ingot")
-paras = scrape(query)
-file = open("iron.py", "w", newline="")
-file.write(f"{paras}")
-file.close()
+query = search("wither boss")
+scrape_about(query)
