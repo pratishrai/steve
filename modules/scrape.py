@@ -28,8 +28,8 @@ def scrape(url: str):
     return paras
 
 
-query = search("ender dragon")
+query = search("iron ingot")
 paras = scrape(query)
-file = open("dump.py", "w", newline="")
+file = open("iron.py", "w", newline="")
 file.write(f"{paras}")
 file.close()

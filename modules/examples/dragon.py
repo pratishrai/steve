@@ -1,4 +1,3 @@
-"""AN Example of how the scraped data looks"""
 [
     "200 × 100\n",
     "Hostile\n",
