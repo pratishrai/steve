@@ -11,7 +11,7 @@ class Wiki(commands.Cog):
     async def about(self, ctx, *, query: str):
         url = scrape.search(query=query)
         about = scrape.scrape_about(url=url)
-        await ctx.send(f"```\n{about[0]}```")
+        await ctx.send(f"```\n{about[0]}\n{about[1]}\n{about[2]}```")
 
 
 def setup(client):
