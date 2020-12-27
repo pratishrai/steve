@@ -30,6 +30,17 @@ async def on_ready():
 
 
 @client.command()
+async def ping(ctx):
+    async with ctx.channel.typing():
+        embed = discord.Embed(
+            title="Ping",
+            colour=ctx.author.colour,
+            description=f"Pong! `Latency: {round(client.latency * 1000)} ms`",
+        )
+    await ctx.send(embed=embed)
+
+
+@client.command()
 async def invite(ctx):
     await ctx.send(
         "https://discord.com/api/oauth2/authorize?client_id=784725037172129803&permissions=379968&scope=bot"

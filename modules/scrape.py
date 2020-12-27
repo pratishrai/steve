@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import requests
-import re
 
 
 def search(query: str):
@@ -13,7 +12,6 @@ def search(query: str):
         for litag in ultag.find_all("li"):
             for links in litag.find_all("a", {"class": "unified-search__result__link"}):
                 search_results.append(links)
-
     return search_results[0]["href"]
 
 
@@ -21,15 +19,13 @@ def scrape_about(url: str):
     scrape_response = requests.get(url).text
     scrape_source = BeautifulSoup(scrape_response, "lxml")
     scrape_source.table.decompose()
-
+    title = scrape_source.title.text
     paras = []
     for divs in scrape_source.find_all(
         "div", {"class": "mw-parser-output"}
     ):  # the main div tag with all the content needed
+        image = divs.find("img")
         for para in divs.find_all("p"):
             paras.append(para.text)
-    return paras
+    return title, paras, image["src"]
 
-
-query = search("wither boss")
-scrape_about(query)
