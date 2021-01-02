@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from markdownify import markdownify as md
 
 
 def search(query: str):
@@ -8,9 +9,9 @@ def search(query: str):
     ).text
     search_source = BeautifulSoup(search_response, "lxml")
     search_results = []
-    for ultag in search_source.find_all("ul", {"class": "unified-search__results"}):
-        for litag in ultag.find_all("li"):
-            for links in litag.find_all("a", {"class": "unified-search__result__link"}):
+    for ul_tag in search_source.find_all("ul", {"class": "unified-search__results"}):
+        for li_tag in ul_tag.find_all("li"):
+            for links in li_tag.find_all("a", {"class": "unified-search__result__link"}):
                 search_results.append(links)
     return search_results[0]["href"]
 
@@ -18,9 +19,11 @@ def search(query: str):
 def scrape_about(url: str):
     scrape_response = requests.get(url).text
     scrape_source = BeautifulSoup(scrape_response, "lxml")
-    scrape_source.table.decompose()
+    if scrape_source.table is not None:
+        scrape_source.table.decompose()
     title = scrape_source.title.text
     paras = []
+    image = None
     for divs in scrape_source.find_all(
         "div", {"class": "mw-parser-output"}
     ):  # the main div tag with all the content needed
@@ -29,3 +32,15 @@ def scrape_about(url: str):
             paras.append(para.text)
     return title, paras, image["src"]
 
+
+def scrape_table(url: str):
+    table_response = requests.get(url).text
+    table_source = BeautifulSoup(table_response, "lxml")
+    table_title = table_source.title.text
+    info_table = None
+    image = None
+    for divs in table_source.find_all("div", {"class": "mw-parser-output"}):
+        image = divs.find("img")
+        info_table = divs.find("table")
+    markdown = md(f"{info_table}", strip=["a"])
+    return table_title, markdown, image["src"]

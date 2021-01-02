@@ -2,7 +2,10 @@ import discord
 from discord.ext import commands
 from discord import Activity, ActivityType, AllowedMentions
 from discord.ext.commands import when_mentioned_or
+
 from modules.wiki import Wiki
+from modules.profile import Profile
+from modules.stats import Stats
 
 import env_file
 import logging
@@ -11,10 +14,16 @@ token = env_file.get()
 
 logging.basicConfig(level=logging.INFO)
 
+intents = discord.Intents.default()
+intents.typing = True
+intents.presences = False
+intents.members = True
+
 client = commands.Bot(
     command_prefix=when_mentioned_or("mc "),
     help_command=None,
     allowed_mentions=AllowedMentions.none(),
+    intents=intents,
 )
 
 
@@ -27,6 +36,22 @@ async def on_ready():
     )
     print(f'Bot is running as "{client.user}"')
     print("=========================================")
+
+
+@client.command()
+async def help(ctx):
+    async with ctx.channel.typing():
+        embed = discord.Embed(
+            title="Help",
+            colour=ctx.author.colour,
+            description="Here is a list of commands you can use:"
+        )
+        embed.add_field(name="Wiki", inline=False, value=f"`{ctx.prefix}about <entity>` - Get Info about anything in "
+                                                         f"Minecraft.\n`{ctx.prefix}wiki <entity>` - Get the link to "
+                                                         f"official wiki page of that entity.")
+        embed.add_field(name="Developer", inline=False, value=f"`{ctx.prefix}stats` - Some statistics about the bot.")
+        embed.add_field(name="\u200b", inline=False, value="More commands coming soon...")
+    await ctx.send(embed=embed)
 
 
 @client.command()
@@ -48,5 +73,7 @@ async def invite(ctx):
 
 
 client.add_cog(Wiki(client))
+client.add_cog(Profile(client))
+client.add_cog(Stats(client))
 
 client.run(token["BOT_TOKEN"])
