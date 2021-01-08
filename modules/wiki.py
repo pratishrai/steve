@@ -33,18 +33,12 @@ class Wiki(commands.Cog):
         await ctx.send(f"{url}")
 
     @commands.command()
-    async def table(self, ctx, *, query: str):
+    async def craft(self, ctx, *, query: str):
         async with ctx.channel.typing():
-            url = scrape.search(query=query)
-            title, table, image = scrape.scrape_table(url=url)
-            image = image.split("/revision")
-            title = title.split("–")
-            description = str(table)
-
-            embed = discord.Embed(
-                title=f"{title[0]}", colour=ctx.author.colour, description=description
-            )
-            embed.set_thumbnail(url=image[0])
+            image, info, ingredients = scrape.scrape_crafting(query=query)
+            embed = discord.Embed(colour=ctx.author.colour, description=info)
+            embed.add_field(name="Ingredients:", inline=False, value=ingredients)
+            embed.set_image(url=f"https:{image}")
         await ctx.send(embed=embed)
 
 

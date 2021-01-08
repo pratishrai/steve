@@ -1,17 +1,18 @@
 from bs4 import BeautifulSoup
 import requests
-from markdownify import markdownify as md
 
 
 def search(query: str):
     search_response = requests.get(
-        f"https://minecraft.gamepedia.com/Special:Search/Articles?fulltext=1&query={query}&scope=internal&limit=10"
+        f"https://minecraft.gamepedia.com/Special:Search/Articles?fulltext=1&query={query}&scope=internal&limit=5"
     ).text
     search_source = BeautifulSoup(search_response, "lxml")
     search_results = []
     for ul_tag in search_source.find_all("ul", {"class": "unified-search__results"}):
         for li_tag in ul_tag.find_all("li"):
-            for links in li_tag.find_all("a", {"class": "unified-search__result__link"}):
+            for links in li_tag.find_all(
+                "a", {"class": "unified-search__result__link"}
+            ):
                 search_results.append(links)
     return search_results[0]["href"]
 
@@ -33,14 +34,16 @@ def scrape_about(url: str):
     return title, paras, image["src"]
 
 
-def scrape_table(url: str):
-    table_response = requests.get(url).text
-    table_source = BeautifulSoup(table_response, "lxml")
-    table_title = table_source.title.text
-    info_table = None
+def scrape_crafting(query: str):
+    crafting_response = requests.get(
+        f"https://www.minecraftcraftingguide.net/search/?s={query}"
+    ).text
+    crafting_source = BeautifulSoup(crafting_response, "lxml")
     image = None
-    for divs in table_source.find_all("div", {"class": "mw-parser-output"}):
-        image = divs.find("img")
-        info_table = divs.find("table")
-    markdown = md(f"{info_table}", strip=["a"])
-    return table_title, markdown, image["src"]
+    info = None
+    ingredients = None
+    for table in crafting_source.find_all("table", {"class": "craftingTable"}):
+        image = table.find("img")["src"]
+        info = table.find("span")
+        ingredients = info.findNext("td")
+    return image, info.text, ingredients.text

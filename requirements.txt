@@ -6,4 +6,3 @@ lxml==4.6.2
 isort
 black
 psutil==5.7.3
-markdownify

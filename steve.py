@@ -1,14 +1,14 @@
+import logging
+
 import discord
-from discord.ext import commands
+import env_file
 from discord import Activity, ActivityType, AllowedMentions
+from discord.ext import commands
 from discord.ext.commands import when_mentioned_or
 
-from modules.wiki import Wiki
 from modules.profile import Profile
 from modules.stats import Stats
-
-import env_file
-import logging
+from modules.wiki import Wiki
 
 token = env_file.get()
 
@@ -44,13 +44,25 @@ async def help(ctx):
         embed = discord.Embed(
             title="Help",
             colour=ctx.author.colour,
-            description="Here is a list of commands you can use:"
+            description="Here is a list of commands you can use:",
         )
-        embed.add_field(name="Wiki", inline=False, value=f"`{ctx.prefix}about <entity>` - Get Info about anything in "
-                                                         f"Minecraft.\n`{ctx.prefix}wiki <entity>` - Get the link to "
-                                                         f"official wiki page of that entity.")
-        embed.add_field(name="Developer", inline=False, value=f"`{ctx.prefix}stats` - Some statistics about the bot.")
-        embed.add_field(name="\u200b", inline=False, value="More commands coming soon...")
+        embed.add_field(
+            name="Info",
+            inline=False,
+            value=f"`{ctx.prefix}about <entity>` - Get Info about anything in "
+            f"Minecraft.\n`{ctx.prefix}wiki <entity>` - Get the link to "
+            f"official wiki page of that entity.\n"
+            f"`{ctx.prefix}craft <item>` - Get the crafting recipe for "
+            f"any item.",
+        )
+        embed.add_field(
+            name="Developer",
+            inline=False,
+            value=f"`{ctx.prefix}stats` - Some statistics about the bot.",
+        )
+        embed.add_field(
+            name="\u200b", inline=False, value="More commands coming soon..."
+        )
     await ctx.send(embed=embed)
 
 
