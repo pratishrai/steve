@@ -16,7 +16,7 @@ class Stats(commands.Cog, name="Stats"):
 
     @commands.command()
     async def stats(self, ctx):
-        async with ctx.channle.typing():
+        async with ctx.channel.typing():
             """
             Returns bot statistics and technical data.
             """

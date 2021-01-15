@@ -47,3 +47,4 @@ def scrape_crafting(query: str):
         info = table.find("span")
         ingredients = info.findNext("td")
     return image, info.text, ingredients.text
+

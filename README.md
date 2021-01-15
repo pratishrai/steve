@@ -18,6 +18,10 @@
 **Get the crafting recipe for _any_ item**  
   ![craft_bow](https://f.sed.lol/files/3vPAM.png)
   
+### `mc profile <player>`
+**Get the Minecraft profile of any player.**  
+  ![profile](https://f.sed.lol/files/hipeE.png)
+  
 <hr>  
   
 # Contributors  

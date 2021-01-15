@@ -53,7 +53,7 @@ async def help(ctx):
             f"Minecraft.\n`{ctx.prefix}wiki <entity>` - Get the link to "
             f"official wiki page of that entity.\n"
             f"`{ctx.prefix}craft <item>` - Get the crafting recipe for "
-            f"any item.",
+            f"any item.\n`{ctx.prefix}profile <player>` - Get the Minecraft profile of any player.",
         )
         embed.add_field(
             name="Developer",
