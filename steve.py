@@ -38,6 +38,11 @@ async def on_ready():
     print("=========================================")
 
 
+@client.event
+async def on_command_error(ctx, error):
+    print(error)
+
+
 @client.command()
 async def help(ctx):
     async with ctx.channel.typing():
@@ -49,11 +54,10 @@ async def help(ctx):
         embed.add_field(
             name="Info",
             inline=False,
-            value=f"`{ctx.prefix}about <entity>` - Get Info about anything in "
-            f"Minecraft.\n`{ctx.prefix}wiki <entity>` - Get the link to "
-            f"official wiki page of that entity.\n"
-            f"`{ctx.prefix}craft <item>` - Get the crafting recipe for "
-            f"any item.\n`{ctx.prefix}profile <player>` - Get the Minecraft profile of any player.",
+            value=f"`{ctx.prefix}about <entity>` - Get Info about anything in Minecraft.\n`{ctx.prefix}wiki <entity>` "
+            f"- Get the link to official wiki page of that entity.\n`{ctx.prefix}craft <item>` - Get the "
+            f"crafting recipe for any item.\n`{ctx.prefix}profile <player>` - Get the Minecraft profile of any "
+            f"player.",
         )
         embed.add_field(
             name="Developer",

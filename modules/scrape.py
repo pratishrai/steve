@@ -25,9 +25,7 @@ def scrape_about(url: str):
     title = scrape_source.title.text
     paras = []
     image = None
-    for divs in scrape_source.find_all(
-        "div", {"class": "mw-parser-output"}
-    ):  # the main div tag with all the content needed
+    for divs in scrape_source.find_all("div", {"class": "mw-parser-output"}):
         image = divs.find("img")
         for para in divs.find_all("p"):
             paras.append(para.text)
@@ -48,3 +46,12 @@ def scrape_crafting(query: str):
         ingredients = info.findNext("td")
     return image, info.text, ingredients.text
 
+
+def tips_tricks():
+    tt_response = requests.get("https://minecraft.fandom.com/wiki/Minecraft_Tips").text
+    tt_source = BeautifulSoup(tt_response, "lxml")
+    tt_div = tt_source.find("div", {"class": "mw-parser-output"})
+    tt_list = []
+    for litag in tt_div.find_all("li"):
+        tt_list.append(litag.text)
+    return tt_list[5:]

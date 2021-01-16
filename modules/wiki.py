@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from modules import scrape
+import random
 
 
 class Wiki(commands.Cog):
@@ -24,6 +25,7 @@ class Wiki(commands.Cog):
                 description=description,
             )
             embed.set_image(url=image[0])
+            embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -39,6 +41,7 @@ class Wiki(commands.Cog):
             embed = discord.Embed(colour=ctx.author.colour, description=info)
             embed.add_field(name="Ingredients:", inline=False, value=ingredients)
             embed.set_image(url=f"https:{image}")
+            embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
         await ctx.send(embed=embed)
 
 

@@ -3,6 +3,8 @@ from discord.ext import commands
 import requests
 import time
 import datetime
+import random
+from modules import scrape
 
 
 class Profile(commands.Cog):
@@ -45,6 +47,7 @@ class Profile(commands.Cog):
                 count += 1
             embed.add_field(name="Name History", inline=False, value=name_history)
             embed.set_thumbnail(url=f"https://mc-heads.net/head/{uuid}.png")
+            embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
         await ctx.send(embed=embed)
 
 
