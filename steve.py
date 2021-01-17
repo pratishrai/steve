@@ -39,6 +39,27 @@ async def on_ready():
 
 
 @client.event
+async def on_guild_join(guild):
+    channel = guild.system_channel
+    embed = discord.Embed(
+        colour=0x2859B8,
+        description="""Hello, Thanks for adding Steve✨
+        Steve is a simple and easy to use Discord bot that knows everything about Minecraft. About blocks, items, mobs, recipes, and even players!!
+        Simply use the help command (`mc help`) to get started!""",
+    )
+    embed.add_field(
+        name="**__Usefull Links__**",
+        inline=False,
+        value="""
+    Check out Steve✨'s [Top.gg page](https://top.gg/bot/784725037172129803) for all features.
+    Consider upvoting **[Steve✨](https://top.gg/bot/784725037172129803/vote)** on Top.gg
+    Have an issue/suggestion? Join the **[Support Server](https://discord.gg/dKVfhV2jfn)**
+    """,
+    )
+    await channel.send(embed=embed)
+
+
+@client.event
 async def on_command_error(ctx, error):
     print(error)
 
