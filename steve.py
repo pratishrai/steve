@@ -10,6 +10,7 @@ from modules.profile import Profile
 from modules.stats import Stats
 from modules.wiki import Wiki
 from modules.dbl import TopGG
+from modules.rcon import Rcon
 
 token = env_file.get()
 
@@ -115,5 +116,6 @@ client.add_cog(Wiki(client))
 client.add_cog(Profile(client))
 client.add_cog(Stats(client))
 client.add_cog(TopGG(client))
+client.add_cog(Rcon(client))
 
 client.run(token["BOT_TOKEN"])
