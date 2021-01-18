@@ -9,6 +9,7 @@ from discord.ext.commands import when_mentioned_or
 from modules.profile import Profile
 from modules.stats import Stats
 from modules.wiki import Wiki
+from modules.dbl import TopGG
 
 token = env_file.get()
 
@@ -61,6 +62,7 @@ async def on_guild_join(guild):
 
 @client.event
 async def on_command_error(ctx, error):
+    await ctx.message.add_reaction("❌")
     print(error)
 
 
@@ -112,5 +114,6 @@ async def invite(ctx):
 client.add_cog(Wiki(client))
 client.add_cog(Profile(client))
 client.add_cog(Stats(client))
+client.add_cog(TopGG(client))
 
 client.run(token["BOT_TOKEN"])

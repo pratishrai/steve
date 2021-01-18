@@ -13,7 +13,8 @@ class Wiki(commands.Cog):
         async with ctx.channel.typing():
             url = scrape.search(query=query)
             title, about, image = scrape.scrape_about(url=url)
-            image = image.split("/revision")
+            if image is not None:
+                image = image.split("/revision")[0]
             title = title.split("–")
             description = f"{about[0]}"
             if len(about) > 3:
@@ -24,7 +25,8 @@ class Wiki(commands.Cog):
                 colour=ctx.author.colour,
                 description=description,
             )
-            embed.set_image(url=image[0])
+            if image is not None:
+                embed.set_image(url=image)
             embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
         await ctx.send(embed=embed)
 

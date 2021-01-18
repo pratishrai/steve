@@ -27,9 +27,11 @@ def scrape_about(url: str):
     image = None
     for divs in scrape_source.find_all("div", {"class": "mw-parser-output"}):
         image = divs.find("img")
+        if image is not None:
+            image = image["src"]
         for para in divs.find_all("p"):
             paras.append(para.text)
-    return title, paras, image["src"]
+    return title, paras, image
 
 
 def scrape_crafting(query: str):
