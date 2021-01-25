@@ -57,6 +57,20 @@ class Stats(commands.Cog, name="Stats"):
                 value=f"{timedelta(seconds=int(time.time() - process.create_time()))}",
             )
 
+            embed.add_field(name="**__Links__**", inline=False, value="\u200b")
+            embed.add_field(
+                name="Support Server",
+                value="[Steve✨ Support](https://discord.gg/dKVfhV2jfn)",
+            )
+            embed.add_field(
+                name="Invite",
+                value="[Add Steve✨ to your server](https://discord.com/api/oauth2/authorize?client_id=784725037172129803&permissions=379968&scope=bot)",
+            )
+            embed.add_field(
+                name="Top.gg page",
+                value="[Steve✨](https://top.gg/bot/784725037172129803)",
+            )
+
             embed.set_footer(
                 text=f"Made by {app_info.owner}",
                 icon_url=app_info.owner.avatar_url_as(size=128),

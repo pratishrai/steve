@@ -49,14 +49,17 @@ async def on_guild_join(guild):
         Steve is a simple and easy to use Discord bot that knows everything about Minecraft. About blocks, items, mobs, recipes, and even players!!
         Simply use the help command (`mc help`) to get started!""",
     )
+    embed.add_field(name="**__Links__**", inline=False, value="\u200b")
     embed.add_field(
-        name="**__Usefull Links__**",
-        inline=False,
-        value="""
-    Check out Steve✨'s [Top.gg page](https://top.gg/bot/784725037172129803) for all features.
-    Consider upvoting **[Steve✨](https://top.gg/bot/784725037172129803/vote)** on Top.gg
-    Have an issue/suggestion? Join the **[Support Server](https://discord.gg/dKVfhV2jfn)**
-    """,
+        name="Support Server", value="[Steve✨ Support](https://discord.gg/dKVfhV2jfn)"
+    )
+    embed.add_field(
+        name="Invite",
+        value="[Add Steve✨ to your server](https://discord.com/api/oauth2/authorize?client_id=784725037172129803&permissions=379968&scope=bot)",
+    )
+    embed.add_field(
+        name="Top.gg page",
+        value="[Steve✨](https://top.gg/bot/784725037172129803)",
     )
     await channel.send(embed=embed)
 
@@ -115,7 +118,7 @@ async def invite(ctx):
 client.add_cog(Wiki(client))
 client.add_cog(Profile(client))
 client.add_cog(Stats(client))
-client.add_cog(TopGG(client))
+# client.add_cog(TopGG(client))
 client.add_cog(Rcon(client))
 
 client.run(token["BOT_TOKEN"])
