@@ -1,56 +1,47 @@
-from sqlalchemy import create_engine, Column, Integer, BigInteger, String, Sequence
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import create_engine, Column, Integer, BigInteger, String, Sequence
+# from sqlalchemy.ext.declarative import declarative_base
 
-from sqlalchemy.orm import sessionmaker, relationship
+# from sqlalchemy.orm import sessionmaker, relationship
 
-import logging
-import env_file
+# import logging
+# import env_file
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 
-token = env_file.get()
+# token = env_file.get()
 
-Base = declarative_base()
-
-
-class RconCreds(Base):
-    __tablename__ = "rconcreds"
-
-    id = Column(Integer, Sequence("user_id_seq"), primary_key=True)
-    member_id = Column("member_id", BigInteger, unique=True)
-    host = Column("host", String)
-    port = Column("port", Integer)
-    password = Column("password", String)
+# Base = declarative_base()
 
 
-engine = create_engine(token["DATABASE_URL"])
-Base.metadata.create_all(bind=engine)
+# class MemberProfile(Base):
+#     __tablename__ = "member_profile"
+
+#     id = Column(Integer, Sequence("user_id_seq"), primary_key=True)
+#     member_id = Column("member_id", BigInteger, unique=True)
+#     username = Column("username", String)
 
 
-Session = sessionmaker(bind=engine)
-
-session = Session()
-
-# creds = RconCreds(
-#     member_id=id,
-#     host="host",
-#     port=port,
-#     password="password,
-# )
+# engine = create_engine(token["DATABASE_URL"])
+# Base.metadata.create_all(bind=engine)
 
 
-def add_creds(creds):
-    session.add(creds)
-    session.commit()
-    session.close()
+# Session = sessionmaker(bind=engine)
+
+# session = Session()
+
+# def add_creds(member):
+#     session.add(member)
+#     session.commit()
+#     session.close()
 
 
-def get_creds(member_id):
-    creds = session.query(RconCreds).filter_by(member_id=member_id).first()
-    if creds is not None:
-        host = creds.host
-        port = creds.port
-        password = creds.password
-    else:
-        host, port, password = (None, None, None)
-    return host, port, password
+# def get_creds(member_id):
+#     member = session.query(MemberProfile).filter_by(member_id=member_id).first()
+#     if member is not None:
+#         username = member.username
+#     else:
+#         username = None
+#     return username
+
+
+# member = MemberProfile(member_id=id, username=username)

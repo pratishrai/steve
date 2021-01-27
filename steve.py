@@ -10,7 +10,6 @@ from modules.profile import Profile
 from modules.stats import Stats
 from modules.wiki import Wiki
 from modules.dbl import TopGG
-from modules.rcon import Rcon
 
 token = env_file.get()
 
@@ -81,10 +80,10 @@ async def help(ctx):
         embed.add_field(
             name="Info",
             inline=False,
-            value=f"`{ctx.prefix}about <entity>` - Get Info about anything in Minecraft.\n`{ctx.prefix}wiki <entity>` "
+            value=f"`{ctx.prefix}about <entity>` - Get info about anything in Minecraft.\n`{ctx.prefix}wiki <entity>` "
             f"- Get the link to official wiki page of that entity.\n`{ctx.prefix}craft <item>` - Get the "
             f"crafting recipe for any item.\n`{ctx.prefix}profile <player>` - Get the Minecraft profile of any "
-            f"player.",
+            f"player.\n`{ctx.prefix}server <server address>` - Get info about any valid Minecraft Java Server.",
         )
         embed.add_field(
             name="Developer",
@@ -118,7 +117,6 @@ async def invite(ctx):
 client.add_cog(Wiki(client))
 client.add_cog(Profile(client))
 client.add_cog(Stats(client))
-# client.add_cog(TopGG(client))
-client.add_cog(Rcon(client))
+client.add_cog(TopGG(client))
 
 client.run(token["BOT_TOKEN"])
