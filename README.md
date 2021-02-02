@@ -22,6 +22,10 @@
 **Get the Minecraft profile of any player.**  
   ![profile](https://f.sed.lol/files/hipeE.png)
   
+### `mc server <server address>`
+**Get info about any valid Minecraft Java Server.**  
+  ![server](https://f.sed.lol/files/HTdrp.png)
+  
 ### Tips & Tricks
 **A small but usefull tip in the footer of every embed to make your Minecraft experience better.**  
   ![tips&tricks](https://f.sed.lol/files/ANWq9.png)
