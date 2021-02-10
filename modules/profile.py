@@ -47,7 +47,7 @@ class Profile(commands.Cog):
                     date = datetime.datetime.fromtimestamp(timestamp / 1000.0)
                 else:
                     date = "Original Username"
-                name_history += f"**{count}.** {name}: `{date}`\n"
+                name_history += f"**{count}.** `{name}`: `{date}`\n"
                 count += 1
             embed.add_field(name="Name History", inline=False, value=name_history)
             embed.set_thumbnail(url=f"https://mc-heads.net/head/{uuid}.png")

@@ -65,7 +65,11 @@ async def on_guild_join(guild):
 
 @client.event
 async def on_command_error(ctx, error):
-    await ctx.message.add_reaction("❌")
+    embed = discord.Embed(
+        title="Oops, Steve✨ fell into an error!",
+        colour=ctx.author.colour)
+    embed.set_image(url="https://f.sed.lol/files/r6MhW.gif")
+    await ctx.send(embed=embed)
     print(error)
 
 
