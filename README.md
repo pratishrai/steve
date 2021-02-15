@@ -1,4 +1,3 @@
-
 # ![Steve](https://cdn.discordapp.com/avatars/784725037172129803/aa2501233711e7a9c1515bf37913c9bc.png?size=32) Steve  
 #### Steve is a simple and easy to use Discord bot that knows everything about Minecraft. About blocks, items, mobs, recipes and even players!!✨One of a kind bot✨  
   

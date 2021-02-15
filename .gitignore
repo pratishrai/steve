@@ -102,7 +102,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-SwaglyricsBot/.env
 .venv
 env/
 venv/
