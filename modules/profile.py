@@ -35,6 +35,11 @@ class Profile(commands.Cog):
                 colour=ctx.author.colour,
             )
             embed.add_field(name="UUID", inline=False, value=f"`{uuid}`")
+            embed.add_field(
+                name="Skin",
+                inline=False,
+                value=f"[Render](https://mc-heads.net/body/{uuid}) | [Download](https://mc-heads.net/download/{uuid})",
+            )
             name_history = ""
             count = 1
             for names in history:
@@ -50,7 +55,7 @@ class Profile(commands.Cog):
                 name_history += f"**{count}.** `{name}`: `{date}`\n"
                 count += 1
             embed.add_field(name="Name History", inline=False, value=name_history)
-            embed.set_thumbnail(url=f"https://mc-heads.net/head/{uuid}.png")
+            embed.set_thumbnail(url=f"https://mc-heads.net/head/{uuid}.png/left")
             embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
         await ctx.send(embed=embed)
 

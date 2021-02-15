@@ -6,12 +6,13 @@ from discord import Activity, ActivityType, AllowedMentions
 from discord.ext import commands
 from discord.ext.commands import when_mentioned_or
 
+from modules.dbl import TopGG
 from modules.profile import Profile
 from modules.stats import Stats
 from modules.wiki import Wiki
-from modules.dbl import TopGG
 
 token = env_file.get()
+environ = token["ENVIRON"]
 
 logging.basicConfig(level=logging.INFO)
 
@@ -65,9 +66,13 @@ async def on_guild_join(guild):
 
 @client.event
 async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        return
     embed = discord.Embed(
         title="Oops, Steve✨ fell into an error!",
-        colour=ctx.author.colour)
+        colour=ctx.author.colour,
+        description=f"{error}",
+    )
     embed.set_image(url="https://f.sed.lol/files/r6MhW.gif")
     await ctx.send(embed=embed)
     print(error)
@@ -121,6 +126,9 @@ async def invite(ctx):
 client.add_cog(Wiki(client))
 client.add_cog(Profile(client))
 client.add_cog(Stats(client))
-client.add_cog(TopGG(client))
 
-client.run(token["BOT_TOKEN"])
+if environ == "PROD":
+    client.add_cog(TopGG(client))
+    client.run(token["BOT_TOKEN"])
+elif environ == "DEV":
+    client.run(token["DEV_BOT_TOKEN"])
