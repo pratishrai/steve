@@ -60,7 +60,7 @@ class Stats(commands.Cog, name="Stats"):
             embed.add_field(name="**__Links__**", inline=False, value="\u200b")
             embed.add_field(
                 name="Support Server",
-                value="[Steve✨ Support](https://discord.gg/dKVfhV2jfn)",
+                value="[Community Server](https://discord.gg/dKVfhV2jfn)",
             )
             embed.add_field(
                 name="Invite",

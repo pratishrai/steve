@@ -51,7 +51,7 @@ async def on_guild_join(guild):
     )
     embed.add_field(name="**__Links__**", inline=False, value="\u200b")
     embed.add_field(
-        name="Support Server", value="[Steve✨ Support](https://discord.gg/dKVfhV2jfn)"
+        name="Community Server", value="[Steve✨ Community](https://discord.gg/dKVfhV2jfn)"
     )
     embed.add_field(
         name="Invite",

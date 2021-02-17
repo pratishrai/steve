@@ -3,7 +3,6 @@ requests==2.25.0
 env-file
 beautifulsoup4==4.9.3
 lxml==4.6.2
-isort
 black
 psutil==5.7.3
 databases==0.4.1
