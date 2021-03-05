@@ -36,8 +36,7 @@ async def on_ready():
             type=ActivityType.watching, name="you getting all that experience."
         )
     )
-    print(f'Bot is running as "{client.user}"')
-    print("=========================================")
+    logging.info(f"=====Bot is running as: {client.user}=====")
 
 
 @client.event
@@ -51,7 +50,8 @@ async def on_guild_join(guild):
     )
     embed.add_field(name="**__Links__**", inline=False, value="\u200b")
     embed.add_field(
-        name="Community Server", value="[Steve✨ Community](https://discord.gg/dKVfhV2jfn)"
+        name="Community Server",
+        value="[Steve✨ Community](https://discord.gg/dKVfhV2jfn)",
     )
     embed.add_field(
         name="Invite",
