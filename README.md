@@ -1,6 +1,15 @@
+[![Discord Bots](https://top.gg/api/widget/status/784725037172129803.svg)](https://top.gg/bot/784725037172129803)
+[![invite bot](https://img.shields.io/static/v1?style=flat&logo=discord&logoColor=FFF&label=&message=invite%20bot&color=7289DA)](https://top.gg/bot/784725037172129803)
+[![Discord Server](https://badgen.net/badge/discord/join%20chat/7289DA?icon=discord)](https://discord.gg/dKVfhV2jfn)
+
 # ![Steve](https://cdn.discordapp.com/avatars/784725037172129803/aa2501233711e7a9c1515bf37913c9bc.png?size=32) Steve  
-#### Steve is a simple and easy to use Discord bot that knows everything about Minecraft. About blocks, items, mobs, recipes and even players!!✨One of a kind bot✨  
-  
+#### Steve is an advanced and easy to use Discord bot that knows everything about Minecraft. About blocks, items, mobs, recipes and even players!!✨One of a kind bot✨  
+
+<hr>  
+
+[![Discord Bots](https://top.gg/api/widget/784725037172129803.svg)](https://top.gg/bot/784725037172129803)
+[![Bots for Discord](https://botsfordiscord.com/api/bot/784725037172129803/widget)](https://botsfordiscord.com/bots/784725037172129803)
+
 <hr>  
   
 ## Commands and Features  
@@ -27,8 +36,8 @@
   
 ### Tips & Tricks
 **A small but usefull tip in the footer of every embed to make your Minecraft experience better.**  
-  ![tips&tricks](https://f.sed.lol/files/ANWq9.png)
-  ![tips&tricks](https://f.sed.lol/files/rGdWU.png)
+  ![tips&tricks](https://f.sed.lol/files/ANWq9.png)  
+  ![tips&tricks](https://f.sed.lol/files/rGdWU.png)  
   
 <hr>  
   
