@@ -4,7 +4,7 @@ from modules import scrape
 import random
 
 
-class Wiki(commands.Cog):
+class Info(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -48,4 +48,4 @@ class Wiki(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Wiki(client))
+    client.add_cog(Info(client))

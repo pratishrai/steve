@@ -9,7 +9,7 @@ from discord.ext.commands import when_mentioned_or
 from modules.dbl import TopGG
 from modules.profile import Profile
 from modules.stats import Stats
-from modules.wiki import Wiki
+from modules.info import Info
 
 token = env_file.get()
 environ = token["ENVIRON"]
@@ -123,7 +123,7 @@ async def invite(ctx):
     )
 
 
-client.add_cog(Wiki(client))
+client.add_cog(Info(client))
 client.add_cog(Profile(client))
 client.add_cog(Stats(client))
 
