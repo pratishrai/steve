@@ -27,7 +27,7 @@ class Info(commands.Cog):
             )
             if image is not None:
                 embed.set_image(url=image)
-            embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
+            # embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -43,7 +43,7 @@ class Info(commands.Cog):
             embed = discord.Embed(colour=ctx.author.colour, description=info)
             embed.add_field(name="Ingredients:", inline=False, value=ingredients)
             embed.set_image(url=f"https:{image}")
-            embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
+            # embed.set_footer(text=f"Tip:\n{random.choice(scrape.tips_tricks())}")
         await ctx.send(embed=embed)
 
 

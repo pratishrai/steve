@@ -4,7 +4,7 @@ import requests
 
 def search(query: str):
     search_response = requests.get(
-        f"https://minecraft.gamepedia.com/Special:Search/Articles?fulltext=1&query={query}&scope=internal&limit=5"
+        f"https://minecraft.fandom.com/wiki/Special:Search?fulltext=1&query={query}&limit=5"
     ).text
     search_source = BeautifulSoup(search_response, "lxml")
     search_results = []
@@ -49,14 +49,14 @@ def scrape_crafting(query: str):
     return image, info.text, ingredients.text
 
 
-def tips_tricks():
-    tt_response = requests.get("https://minecraft.fandom.com/wiki/Minecraft_Tips").text
-    tt_source = BeautifulSoup(tt_response, "lxml")
-    tt_div = tt_source.find("div", {"class": "mw-parser-output"})
-    tt_list = []
-    for litag in tt_div.find_all("li"):
-        tt_list.append(litag.text)
-    return tt_list[5:]
+# def tips_tricks():
+#     tt_response = requests.get("https://minecraft.fandom.com/wiki/Minecraft_Tips").text
+#     tt_source = BeautifulSoup(tt_response, "lxml")
+#     tt_div = tt_source.find("div", {"class": "mw-parser-output"})
+#     tt_list = []
+#     for litag in tt_div.find_all("li"):
+#         tt_list.append(litag.text)
+#     return tt_list[5:]
 
 
 # def enchantment(enchant_name: str):
