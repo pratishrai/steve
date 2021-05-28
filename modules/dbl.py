@@ -2,6 +2,7 @@ import dbl
 import discord
 from discord.ext import commands
 import env_file
+import requests
 
 token = env_file.get()
 
@@ -18,7 +19,18 @@ class TopGG(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_post(self):
-        print("Server count posted successfully")
+        print("Server count posted successfully on top.gg")
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": token["BFD_TOKEN"],
+        }
+        data = {"server_count": len(self.client.guilds)}
+        response = requests.post(
+            "https://botsfordiscord.com/api/bot/784725037172129803",
+            json=data,
+            headers=headers,
+        )
+        print("Server count posted successfully on botsfordiscord.com")
 
 
 def setup(client):

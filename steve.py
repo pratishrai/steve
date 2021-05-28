@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO)
 intents = discord.Intents.default()
 intents.typing = True
 intents.presences = False
-intents.members = True
+# intents.members = True
 
 client = commands.Bot(
     command_prefix=when_mentioned_or("mc "),
