@@ -1,13 +1,15 @@
-[![Discord Bots](https://top.gg/api/widget/status/784725037172129803.svg)](https://top.gg/bot/784725037172129803)
-[![invite bot](https://img.shields.io/static/v1?style=flat&logo=discord&logoColor=FFF&label=&message=invite%20bot&color=7289DA)](https://top.gg/bot/784725037172129803)
-[![Discord Server](https://badgen.net/badge/discord/join%20chat/7289DA?icon=discord)](https://discord.gg/dKVfhV2jfn)
+# Steve  
+#### Steve is an advanced and easy to use Discord bot that knows everything about Minecraft. About blocks, items, mobs, recipes and even players!!✨One of a kind bot✨  
 
 <p align=center>
 <img src="https://cdn.discordapp.com/avatars/784725037172129803/89ecc5ad0038ee3678aa643f9d492c74.png?size=256" alt="steve">
 </p>
 
-# Steve  
-#### Steve is an advanced and easy to use Discord bot that knows everything about Minecraft. About blocks, items, mobs, recipes and even players!!✨One of a kind bot✨  
+<p align=center>
+<a href="https://top.gg/bot/784725037172129803"><img src="https://top.gg/api/widget/status/784725037172129803.svg"></a>
+<a href="https://top.gg/bot/784725037172129803"><img src="https://img.shields.io/static/v1?style=flat&logo=discord&logoColor=FFF&label=&message=invite%20bot&color=7289DA"></a>
+<a href="https://discord.gg/dKVfhV2jfn"><img src="https://badgen.net/badge/discord/join%20chat/7289DA?icon=discord"></a>
+</p>
 
 <hr>  
 
