@@ -22,16 +22,20 @@ def scrape_about(url: str):
     scrape_source = BeautifulSoup(scrape_response, "lxml")
     if scrape_source.table is not None:
         scrape_source.table.decompose()
-    msg_box = scrape_source.find("div", {"class": "msgbox"})
+    msg_box = scrape_source.find_all("div", {"class": "msgbox"})
     if msg_box is not None:
-        msg_box.decompose()
+        for box in msg_box:
+            box.decompose()
     title = scrape_source.title.text
     paras = []
     image = None
     for divs in scrape_source.find_all("div", {"class": "mw-parser-output"}):
         image = divs.find("img")
         if image is not None:
-            image = image["data-src"]
+            try:
+                image = image["data-src"]
+            except KeyError:
+                image = image["src"]
         for para in divs.find_all("p"):
             paras.append(para.text)
     return title, paras, image
