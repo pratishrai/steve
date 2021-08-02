@@ -22,6 +22,9 @@ def scrape_about(url: str):
     scrape_source = BeautifulSoup(scrape_response, "lxml")
     if scrape_source.table is not None:
         scrape_source.table.decompose()
+    msg_box = scrape_source.find("div", {"class": "msgbox"})
+    if msg_box is not None:
+        msg_box.decompose()
     title = scrape_source.title.text
     paras = []
     image = None
