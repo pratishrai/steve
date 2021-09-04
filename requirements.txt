@@ -1,10 +1,9 @@
-discord.py==1.6.0
+discord.py==1.7.3
 requests==2.25.0
 env-file
 beautifulsoup4==4.9.3
 lxml==4.6.2
 black
 psutil==5.7.3
-databases==0.4.1
 dblpy
-psycopg2-binary==2.8.6
+Flask==2.0.1
