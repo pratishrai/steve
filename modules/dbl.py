@@ -1,10 +1,11 @@
 import dbl
+import os
 import discord
 from discord.ext import commands
-import env_file
+from dotenv import load_dotenv
 import requests
 
-token = env_file.get()
+load_dotenv()
 
 
 class TopGG(commands.Cog):
@@ -12,7 +13,7 @@ class TopGG(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        self.token = token["DBL_TOKEN"]
+        self.token = os.getenv("DBL_TOKEN")
         self.dblpy = dbl.DBLClient(
             self.client, self.token, autopost=True
         )  # Autopost will post your guild count every 30 minutes
@@ -22,7 +23,7 @@ class TopGG(commands.Cog):
         print("Server count posted successfully on top.gg")
         headers = {
             "Content-Type": "application/json",
-            "Authorization": token["BFD_TOKEN"],
+            "Authorization": os.getenv("BFD_TOKEN"),
         }
         data = {"server_count": len(self.client.guilds)}
         response = requests.post(
