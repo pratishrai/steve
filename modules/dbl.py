@@ -1,6 +1,5 @@
-import dbl
+import topgg
 import os
-import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import requests
@@ -13,25 +12,29 @@ class TopGG(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        self.token = os.getenv("DBL_TOKEN")
-        self.dblpy = dbl.DBLClient(
-            self.client, self.token, autopost=True
-        )  # Autopost will post your guild count every 30 minutes
+
+        self.dbl_token = os.getenv("DBL_TOKEN")  # set this to your bot's Top.gg token
+
+        self.client.topggpy = topgg.DBLClient(
+            client, self.dbl_token, autopost=True, post_shard_count=True
+        )
 
     @commands.Cog.listener()
-    async def on_guild_post(self):
-        print("Server count posted successfully on top.gg")
+    async def on_autopost_success(self):
+        print(
+            f"Posted server count ({self.client.topggpy.guild_count}), shard count ({self.client.shard_count})"
+        )
         headers = {
             "Content-Type": "application/json",
             "Authorization": os.getenv("BFD_TOKEN"),
         }
         data = {"server_count": len(self.client.guilds)}
         response = requests.post(
-            "https://botsfordiscord.com/api/bot/784725037172129803",
+            "https://discords.com/bots/api/bot/784725037172129803",
             json=data,
             headers=headers,
         )
-        print("Server count posted successfully on botsfordiscord.com")
+        print("Server count posted successfully on discords.com")
 
 
 def setup(client):
