@@ -1,7 +1,8 @@
+import os
 import logging
 
 import discord
-import env_file
+from dotenv import load_dotenv
 from discord import Activity, ActivityType, AllowedMentions
 from discord.ext import commands
 from discord.ext.commands import when_mentioned_or
@@ -11,8 +12,8 @@ from modules.profile import Profile
 from modules.stats import Stats
 from modules.info import Info
 
-token = env_file.get()
-environ = token["ENVIRON"]
+load_dotenv()
+environ = os.getenv("ENVIRON")
 
 logging.basicConfig(level=logging.INFO)
 
@@ -129,6 +130,6 @@ client.add_cog(Stats(client))
 
 if environ == "PROD":
     client.add_cog(TopGG(client))
-    client.run(token["BOT_TOKEN"])
+    client.run(os.getenv("BOT_TOKEN"))
 elif environ == "DEV":
-    client.run(token["DEV_BOT_TOKEN"])
+    client.run(os.getenv("DEV_BOT_TOKEN"))
